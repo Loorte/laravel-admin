@@ -1,39 +1,39 @@
-# Installation
+# Установка
 
-> This package requires PHP 7+ and Laravel 5.5, for old versions please refer to [1.4](http://laravel-admin.org/docs/v1.4/#/)
+> Пакет разработан под PHP 7+ и Laravel 5.5, пожалуйста, для ранних версий используйте версию [1.4](http://laravel-admin.org/docs/v1.4/#/) данного пакета.
 
-First, install laravel, and make sure that the database connection settings are correct.
+Для начала, установит сам Laravel, проведите первоначальную настройку БД и тд.
 
-Then install require this package with command:
+Теперь установите пакет, используя команду:
 ```
 composer require encore/laravel-admin "1.5.*"
 ```
 
-Publish assets and config with command：
+Для публикации файлов, используйте команду：
 ```
 php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
 ```
 
-After runnung previous command you can find config file in `config/admin.php`, in this file you can change default install directory (```/app/Admin```), db connection or table names.
+После запуска предыдущей команды Вы можете настроить конфигурационный файл, он размещается в файле `config/admin.php`, Вы можете изменить каталог установки по-умолчанию (```/app/Admin```), подключение к базе данных, название таблицы и пр.
 
-At last run following command to finish install:
+Для завершения установки выполните команду:
 ```
 php artisan admin:install
 ```
 
-To check that all is working, run `php artisan serve` and open `http://localhost/admin/` in browser, use username `admin` and password `admin` to login.
+Проверить работу можно запустив команду `php artisan serve` и открыв в браузере `http://localhost/admin/`, Имя пользователя и пароль по-умолчанию - `admin`.
 
-## Generated files
+## Генерация файлов
 
-After the installation is complete, the following files are generated in the project directory:
+После завершения установки в каталоге проекта будут созданы следующие файлы:
 
-### Configuration file
+### Файл конфигурации
 
-After the installation is complete, all configurations are in the `config/admin.php` file.
+После завершения установке, все настройки можно будет найти в файле `config/admin.php`.
 
-### Admin files
+### Файлы пакета
 
-After install,you can find directory`app/Admin`,and then most of our develop work is under this directory.
+После установки файлы пакета появится в папке по-умолчанию `app/Admin`, всю разработку, относительно панели администрирования, нужно вести в этой папке.
 
 ```
 app/Admin
@@ -44,14 +44,13 @@ app/Admin
 └── routes.php
 ```
 
-`app/Admin/routes.php` is used to define routes.
+`app/Admin/routes.php` используйте этот файл для настройки маршрутизации.
 
-`app/Admin/bootstrap.php` is bootstrapper for laravel-admin, for usage examples see comments inside it.
+`app/Admin/bootstrap.php` Bootstrapper для laravel-admin, пример использования находится внутри этого файла.
 
-The `app/Admin/Controllers` directory is used to store all the controllers.
-The `HomeController.php` file under this directory is used to handle home request of admin.
-The `ExampleController.php` file is a controller example.
+Каталог `app/Admin/Controllers` используется для хранения контроллеров.
+В этом каталоге находится файл `HomeController.php`, он обрабатывает домашний запрос в админ-панеле. Пример использования контроллера находится в файле `ExampleController.php`.
 
-### Static assets
+### Статические файлы
 
-The front-end static files are in the `/public/packages/admin` directory.
+Статические файлы front-end находятся в папке `/public/packages/admin`.
