@@ -1,6 +1,6 @@
-# Quick start
+# Быстрый запуск
 
-We use `users` table come with `Laravel` for example,the structure of table is:
+Для примера, мы будем использовать таблицу `users`, которая входит в состав дистрибутива `Laravel`, структура таблицы может быть такой:
 ```sql
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -14,49 +14,52 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 ```
-And the model for this table is `App\User.php`
+Модель для этой таблицы находится в файле `App\User.php`
 
-You can follow these steps to setup `CRUD` interfaces of table `users`:
+Что бы настроить `CRUD` интерфейс для таблицы `users` проделайте следующие шаги:
 
-## Add controller
+## Добавьте контроллер
 
-Use the following command to create a controller for `App\User` model
+Используйте следующую команду что бы создать контроллер для модели `App\User`
 
 ```php
-php artisan admin:make UserController --model=App\\User
+php artisan admin:make UserController --model=\\App\\User
 
-// under windows use:
+// для пользователей windows:
 php artisan admin:make UserController --model=App\User
+
+// для Laravel версии 8+:
+php artisan admin:make UserController --model= \\App\\Models\\User
 ```
-The above command will create the controller in `app/Admin/Controllers/UserController.php`.
+После выполнения команды, появится контроллер `app/Admin/Controllers/UserController.php`.
 
-## Add route
+## Добавьте маршрут
 
-Add a route in `app/Admin/routes.php`：
+Добавьте маршрут в файл `app/Admin/routes.php`：
 ```
 $router->resource('demo/users', UserController::class);
 ```
 
-## Add left menu item
+## Добавьте элемент меню в интерфейс
 
-Open `http://localhost:8000/admin/auth/menu`, add menu link and refresh the page, then you can find a link item in left menu bar.
+Откройте `http://localhost:8000/admin/auth/menu`, добавьте элемент в меню, затем обновите страницу, теперь вы можете найти элемент в меню слева.
 
-> Where `uri` fills in the path part that does not contain the prefix of the route, such as the full path `http://localhost:8000/admin/demo/users`, just input `demo/users`, If you want to add an external link, just fill in the full url, such as `http://laravel-admin.org/`.
+> Свойство `uri` заполняется относительно полного адреса админ-панели, если Вам необходимо открывать внутренний ресурс, например `http://localhost:8000/admin/demo/users`, можно указать просто `demo/users`. Однако, если Вам нужно указать внешний источник, укажите полный адрес в данном поле, например `http://laravel-admin.org/`.
 
-### Menu translations
+### Перевод меню
 
-append menu titles in menu_titles index at your language files.
-For example 'Work Units' title:
+Добавлять заголовки можно через файл перевода.
+Для примера для перевода заголовка 'Work Units' нужно внести в файл:
 
-in resources/lang/es/admin.php
+resources/lang/ru/admin.php
 ```php
 ...
-// lowercase and replace spaces with _
+// использовать нужно строчные буквы, пробелы нужно заменить на _
 'menu_titles' => [
-    'work_units' => 'Unidades de trabajo'
+    'work_units' => 'рабочие единицы'
 ],
 ```
 
-## Build grid and form
+## Создание Bootstap сетки или формы
 
-The rest needs to be done is open `app/Admin/Contollers/UserController.php`, find `form()` and `grid()` method and write few lines of code with `model-grid` and `model-form`,for more detail, please read [model-grid](/en/model-grid.md) and [model-form](/en/model-form.md).
+Далее Вам нужно отредактировать файл `app/Admin/Contollers/UserController.php`, найдите методы `form()` или `grid()` и пропишите свою логику с помощью `model-grid` и `model-form`,подробнее прочтите [model-grid](/ru/model-grid.md) и [model-form](/ru/model-form.md).
