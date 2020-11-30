@@ -1,7 +1,7 @@
 
 - Getting started
-  - [Установка](/en/installation.md)
-  - [Quick start](/en/quick-start.md)
+  - [Установка](/ru/installation.md)
+  - [Быстрый запуск](/ru/quick-start.md)
   - [Page content & Layout](/en/content-layout.md)
 - Model grid
   - [Basic usage](/en/model-grid.md)
